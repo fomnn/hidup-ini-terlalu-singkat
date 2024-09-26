@@ -48,7 +48,7 @@ onMounted(() => {
 
 <template>
   <div class="h-screen overflow-hidden">
-    <div class="absolute bottom-4 text-sm font-light right-0 justify-between w-full px-32 flex items-center gap-16">
+    <div class="absolute bottom-4 text-xs lg:text-sm font-light right-0 justify-between w-full px-4 lg:px-32 flex items-center gap-16">
       <p  v-if="age">* Data berdasarkan <a
            href="https://www.bps.go.id/id/statistics-table/2/NTAxIzI=/angka-harapan-hidup-laki-laki--2022.html"
            target="_blank" class="hover:underline">Angka Harapan Hidup (AHH) Menurut Provinsi dan Jenis Kelamin di
@@ -56,8 +56,8 @@ onMounted(() => {
           <p v-else></p>
       <p>Telah digunakan sebanyak {{ usedNumber }} kali</p>
     </div>
-    <form v-if="!age" @submit.prevent="handleSubmit" class="flex flex-col gap-4 items-center justify-center h-screen">
-      <h1 class="text-4xl font-semibold mb-8">Hidup Ini Terlalu Singkat</h1>
+    <form v-if="!age" @submit.prevent="handleSubmit" class="flex flex-col gap-4 px-6 items-center justify-center h-screen">
+      <h1 class="text-4xl font-semibold mb-8 text-center">Hidup Ini Terlalu Singkat</h1>
       <div class="">
         <div class="">
           <p>Usia kamu saat ini</p>
@@ -79,26 +79,26 @@ onMounted(() => {
       </div>
       <button class="bg-zinc-800 text-amber-400 w-60 px-2 py-1">Submit</button>
     </form>
-    <div v-else class="h-screen px-32">
-      <div class="grid grid-cols-2 h-screen">
-        <div class="flex flex-col justify-center text-3xl">
+    <div v-else class="h-screen px-6 lg:px-32">
+      <div class="grid grid-cols-1 lg:grid-cols-2 h-screen">
+        <div class="flex flex-col justify-center text-base lg:text-3xl">
           <p>Anda telah melewati {{ ((curAge / age) * 100).toPrecision(2) }}% hidup anda </p>
           <div class="flex items-center gap-2">
-            <span class="text-[11rem] leading-[10rem] font-bold -ml-2">{{ Number.parseInt((age - curAge).toFixed()) - 1
+            <span class=" text-7xl lg:text-[11rem] lg:leading-[10rem] font-bold -ml-2">{{ Number.parseInt((age - curAge).toFixed()) - 1
               }}</span>
             <div class="">
-              <p class="text-5xl font-semibold">Tahun lagi</p>
-              <p class="text-2xl ml-2 mt-2">untuk menamatkan hidup</p>
+              <p class="text-2xl lg:text-5xl font-semibold">Tahun lagi</p>
+              <p class="text-lg lg:text-2xl ml-1 lg:ml-2 mt-0 lg:mt-2">untuk menamatkan hidup</p>
             </div>
           </div>
-          <p class="">Rata-rata usia {{ gender === "man" ? "laki-laki" : "perempuan" }} di Provinsi {{
+          <p class="text-sm lg:text-xl lg:mt-5">Rata-rata usia {{ gender === "man" ? "laki-laki" : "perempuan" }} di Provinsi {{
             toTitleCase(province) }} yaitu <strong>{{ age }}</strong> tahun*</p>
-          <button class="text-start w-fit mt-10 text-lg hover:underline" @click="reset">Coba Lagi?</button>
+          <button class="text-start w-fit mt-10 text-sm hover:underline" @click="reset">Klik disini untuk mencoba lagi</button>
         </div>
-        <div class="flex flex-col justify-center items-center">
+        <div class="flex flex-col lg:justify-center items-center">
           <div class="grid grid-cols-12 gap-1 relative">
             <div v-for="i of (Number.parseInt((age).toFixed()))" :key="i"
-                 :class="i + 1 < curAge ? 'bg-zinc-800/80' : 'border border-zinc-800'" class="size-8"></div>
+                 :class="i + 1 < curAge ? 'bg-zinc-800/80' : 'border border-zinc-800'" class="size-5 lg:size-8"></div>
           </div>
         </div>
       </div>
