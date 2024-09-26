@@ -1,0 +1,8 @@
+body {
+  /* @apply bg-amber-400; */
+  @apply bg-gradient-to-tr from-yellow-500 to-amber-500;
+}
+
+/* p, h1, h2, h3, h4, h5, h6, button {
+  @apply text-white
+} */
